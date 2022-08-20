@@ -4,7 +4,6 @@ import Chart from 'react-apexcharts';
 import { useEffect } from 'react';
 const Intensity = () => {
   const { data } = useContext(defaultData);
-  // const [option, setOption] = useState({});
   if (data.length > 0) {
     const Intensity = data.map((d) => {
       return d.intensity;
@@ -36,15 +35,33 @@ const Intensity = () => {
   useEffect(() => {
     setValueIntenstityState(valueIntensity);
   }, valueIntensity);
-  console.log(keyIntensityState);
-  console.log(valueIntensityState);
 
   return keyIntensityState !== undefined ? (
-    <div className="w-1/2 h-1/2">
+    <div className="p-8  bg-white m-2 rounded-2xl drop-shadow-2xl">
       <Chart
         options={{
           chart: {
-            id: 'apexchart-example',
+            height: 350,
+            type: 'line',
+            zoom: {
+              enabled: false,
+            },
+          },
+          dataLabels: {
+            enabled: false,
+          },
+          stroke: {
+            curve: 'straight',
+          },
+          title: {
+            text: 'Intensity Chart ',
+            align: 'left',
+          },
+          grid: {
+            row: {
+              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+              opacity: 0.5,
+            },
           },
           xaxis: {
             categories: keyIntensityState,
@@ -52,13 +69,13 @@ const Intensity = () => {
         }}
         series={[
           {
-            name: 'Intensity',
+            name: 'Intensity Value',
             data: valueIntensityState,
           },
         ]}
-        type="bar"
-        // width={400}
-        // height={500}
+        type="line"
+        width={800}
+        height={500}
       />
     </div>
   ) : (

@@ -3,6 +3,12 @@ const connectDB = require('./DB');
 const app = express();
 const dataRoutes = require('./Routes/data');
 const PORT = process.env.PORT || 5000;
+var cors = require('cors');
+var bodyParser = require('body-parser');
+
+app.use(cors());
+// parse application/json
+app.use(bodyParser.json());
 
 connectDB();
 
