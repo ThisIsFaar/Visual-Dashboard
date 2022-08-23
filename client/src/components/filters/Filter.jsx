@@ -26,8 +26,8 @@ const Filter = () => {
           aria-labelledby="accordion-collapse-heading-1 "
         >
           <div className="p-5 font-light border  border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+            <PestleFilter />
             <SourceFilter />
-            {/* <PestleFilter /> */}
           </div>
         </div>
       ) : (

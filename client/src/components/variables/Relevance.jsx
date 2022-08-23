@@ -18,6 +18,7 @@ const Relevance = () => {
         HashRelevance[Relevance[i]]++;
       }
     }
+
     var keyRelevance = [];
     var valueRelevance = [];
     for (let i = 0; i < HashRelevance.length; i++) {
