@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import CountryFilter from './CountryFilter';
 import PestleFilter from './PestleFilter';
+import RegionFilter from './RegionFilter';
+import SectorFilter from './SectorFilter';
 import SourceFilter from './SourceFilter';
 
 const Filter = () => {
@@ -25,9 +28,12 @@ const Filter = () => {
           id="accordion-collapse-body-1"
           aria-labelledby="accordion-collapse-heading-1 "
         >
-          <div className="p-5 font-light border  border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+          <div className="p-5 font-light border  border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900 ">
             <PestleFilter />
             <SourceFilter />
+            <CountryFilter />
+            <RegionFilter />
+            <SectorFilter />
           </div>
         </div>
       ) : (

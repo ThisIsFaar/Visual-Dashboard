@@ -15,12 +15,12 @@ function App() {
       <Navbar />
       <Filter />
       <div className="bg-zinc-100 flex justify-center items-center flex-wrap">
-        <Relevance />
         <Likelihood />
-        <Country />
+        <Relevance />
         <Intensity />
-        <Region />
         <Topics />
+        <Region />
+        <Country />
       </div>
     </div>
   );

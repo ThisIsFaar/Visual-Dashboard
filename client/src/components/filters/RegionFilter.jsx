@@ -1,38 +1,38 @@
 import { useEffect, useState, useContext } from 'react';
 import { defaultData } from '../../context/defaultContext';
-const SourceFilter = () => {
+const RegionFilter = () => {
   const {
     data,
     setData,
     setFlag,
     flag,
-    sourceFilters,
-    setSourceFilters,
     changedData,
     setChangedData,
-    sourcefiltersAdded,
-    setSourceFiltersAdded,
+    regionFilters,
+    setRegionFilters,
+    regionfiltersAdded,
+    setRegionFiltersAdded,
   } = useContext(defaultData);
 
   const [toggleFilter, setToggleFilter] = useState(false);
-
+  console.log(regionFilters);
   const addFilter = (val) => {
-    let filters = [...sourcefiltersAdded];
+    let filters = [...regionfiltersAdded];
     filters.push(val);
-    setSourceFiltersAdded(filters);
-    let sourceFiltersAux = [...sourceFilters].filter((item) => {
+    setRegionFiltersAdded(filters);
+    let regionFiltersAux = [...regionFilters].filter((item) => {
       if (!filters.includes(item)) {
         return { item };
       }
     });
-    setSourceFilters(sourceFiltersAux);
+    setRegionFilters(regionFiltersAux);
     let updatedChangedData = [
-      ...data.filter((d) => !filters.includes(d.source)),
-      ...changedData.filter((d) => !filters.includes(d.source)),
+      ...data.filter((d) => !filters.includes(d.region)),
+      ...changedData.filter((d) => !filters.includes(d.region)),
     ];
     let updatedData = [
-      ...data.filter((d) => filters.includes(d.source)),
-      ...changedData.filter((d) => filters.includes(d.source)),
+      ...data.filter((d) => filters.includes(d.region)),
+      ...changedData.filter((d) => filters.includes(d.region)),
     ];
 
     setData(updatedData);
@@ -40,22 +40,22 @@ const SourceFilter = () => {
   };
 
   const removeFilter = (val) => {
-    let filters = [...sourcefiltersAdded];
+    let filters = [...regionfiltersAdded];
     filters = filters.filter((name) => {
       return val.toLowerCase() !== name.toLowerCase();
     });
-    setSourceFiltersAdded(filters);
-    let sourceFiltersAux = [...sourceFilters];
-    sourceFiltersAux.push(val);
-    setSourceFilters(sourceFiltersAux);
+    setRegionFiltersAdded(filters);
+    let regionFiltersAux = [...regionFilters];
+    regionFiltersAux.push(val);
+    setRegionFilters(regionFiltersAux);
 
     let updateData = [
-      ...data.filter((d) => !filters.includes(d.source)),
-      ...changedData.filter((d) => !filters.includes(d.source)),
+      ...data.filter((d) => !filters.includes(d.region)),
+      ...changedData.filter((d) => !filters.includes(d.region)),
     ];
     let updateChangedData = [
-      ...data.filter((d) => filters.includes(d.source)),
-      ...changedData.filter((d) => filters.includes(d.source)),
+      ...data.filter((d) => filters.includes(d.region)),
+      ...changedData.filter((d) => filters.includes(d.region)),
     ];
 
     setData(updateData);
@@ -64,7 +64,7 @@ const SourceFilter = () => {
 
   return (
     <div className="border border-sky-500 flex flex-col items-center justify-between h-40 m-2">
-      <div className="font-semibold text-2xl">Source Filters</div>
+      <div className="font-semibold text-2xl">Region Filters</div>
       <div className=" w-1/4">
         <div>
           <div className="relative inline-block text-center">
@@ -78,7 +78,7 @@ const SourceFilter = () => {
                 setToggleFilter(toggleFilter === false ? true : false);
               }}
             >
-              Add Source Filters
+              Add Region Filters
               <svg
                 className="-mr-1 ml-2 h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,9 +102,9 @@ const SourceFilter = () => {
                 aria-labelledby="menu-button"
                 tabIndex="-1"
               >
-                {sourceFilters.map((f, key) => {
+                {regionFilters.map((f, key) => {
                   return (
-                    !sourcefiltersAdded.includes(f) && (
+                    !regionfiltersAdded.includes(f) && (
                       <div className="py-1" key={key} role="none">
                         <div
                           href="#"
@@ -134,8 +134,8 @@ const SourceFilter = () => {
       </div>
 
       <div className="flex">
-        {sourcefiltersAdded.length > 0
-          ? sourcefiltersAdded.map((name, key) => {
+        {regionfiltersAdded.length > 0
+          ? regionfiltersAdded.map((name, key) => {
               return (
                 <button
                   key={key}
@@ -163,4 +163,4 @@ const SourceFilter = () => {
   );
 };
 
-export default SourceFilter;
+export default RegionFilter;

@@ -1,38 +1,36 @@
 import { useEffect, useState, useContext } from 'react';
 import { defaultData } from '../../context/defaultContext';
-const SourceFilter = () => {
+const CountryFilter = () => {
   const {
     data,
     setData,
-    setFlag,
-    flag,
-    sourceFilters,
-    setSourceFilters,
+    countryFilters,
+    setCountryFilters,
+    countryfiltersAdded,
+    setCountryFiltersAdded,
     changedData,
     setChangedData,
-    sourcefiltersAdded,
-    setSourceFiltersAdded,
   } = useContext(defaultData);
 
   const [toggleFilter, setToggleFilter] = useState(false);
 
   const addFilter = (val) => {
-    let filters = [...sourcefiltersAdded];
+    let filters = [...countryfiltersAdded];
     filters.push(val);
-    setSourceFiltersAdded(filters);
-    let sourceFiltersAux = [...sourceFilters].filter((item) => {
+    setCountryFiltersAdded(filters);
+    let countryFiltersAux = [...countryFilters].filter((item) => {
       if (!filters.includes(item)) {
         return { item };
       }
     });
-    setSourceFilters(sourceFiltersAux);
+    setCountryFilters(countryFiltersAux);
     let updatedChangedData = [
-      ...data.filter((d) => !filters.includes(d.source)),
-      ...changedData.filter((d) => !filters.includes(d.source)),
+      ...data.filter((d) => !filters.includes(d.country)),
+      ...changedData.filter((d) => !filters.includes(d.country)),
     ];
     let updatedData = [
-      ...data.filter((d) => filters.includes(d.source)),
-      ...changedData.filter((d) => filters.includes(d.source)),
+      ...data.filter((d) => filters.includes(d.country)),
+      ...changedData.filter((d) => filters.includes(d.country)),
     ];
 
     setData(updatedData);
@@ -40,22 +38,22 @@ const SourceFilter = () => {
   };
 
   const removeFilter = (val) => {
-    let filters = [...sourcefiltersAdded];
+    let filters = [...countryfiltersAdded];
     filters = filters.filter((name) => {
       return val.toLowerCase() !== name.toLowerCase();
     });
-    setSourceFiltersAdded(filters);
-    let sourceFiltersAux = [...sourceFilters];
-    sourceFiltersAux.push(val);
-    setSourceFilters(sourceFiltersAux);
+    setCountryFiltersAdded(filters);
+    let countryFiltersAux = [...countryFilters];
+    countryFiltersAux.push(val);
+    setCountryFilters(countryFiltersAux);
 
     let updateData = [
-      ...data.filter((d) => !filters.includes(d.source)),
-      ...changedData.filter((d) => !filters.includes(d.source)),
+      ...data.filter((d) => !filters.includes(d.country)),
+      ...changedData.filter((d) => !filters.includes(d.country)),
     ];
     let updateChangedData = [
-      ...data.filter((d) => filters.includes(d.source)),
-      ...changedData.filter((d) => filters.includes(d.source)),
+      ...data.filter((d) => filters.includes(d.country)),
+      ...changedData.filter((d) => filters.includes(d.country)),
     ];
 
     setData(updateData);
@@ -64,7 +62,7 @@ const SourceFilter = () => {
 
   return (
     <div className="border border-sky-500 flex flex-col items-center justify-between h-40 m-2">
-      <div className="font-semibold text-2xl">Source Filters</div>
+      <div className="font-semibold text-2xl">Country Filters</div>
       <div className=" w-1/4">
         <div>
           <div className="relative inline-block text-center">
@@ -78,7 +76,7 @@ const SourceFilter = () => {
                 setToggleFilter(toggleFilter === false ? true : false);
               }}
             >
-              Add Source Filters
+              Add Country Filters
               <svg
                 className="-mr-1 ml-2 h-5 w-5"
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,9 +100,9 @@ const SourceFilter = () => {
                 aria-labelledby="menu-button"
                 tabIndex="-1"
               >
-                {sourceFilters.map((f, key) => {
+                {countryFilters.map((f, key) => {
                   return (
-                    !sourcefiltersAdded.includes(f) && (
+                    !countryfiltersAdded.includes(f) && (
                       <div className="py-1" key={key} role="none">
                         <div
                           href="#"
@@ -134,8 +132,8 @@ const SourceFilter = () => {
       </div>
 
       <div className="flex">
-        {sourcefiltersAdded.length > 0
-          ? sourcefiltersAdded.map((name, key) => {
+        {countryfiltersAdded.length > 0
+          ? countryfiltersAdded.map((name, key) => {
               return (
                 <button
                   key={key}
@@ -163,4 +161,4 @@ const SourceFilter = () => {
   );
 };
 
-export default SourceFilter;
+export default CountryFilter;
