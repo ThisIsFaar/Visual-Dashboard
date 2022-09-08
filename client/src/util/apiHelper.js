@@ -1,5 +1,8 @@
+const backendURL = process.env.REACT_APP_API_URL;
+console.log(`${backendURL}/data`);
+
 export const getData = () => {
-  return fetch(`http://localhost:8000/api/data`, {
+  return fetch(`${backendURL}/data`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
