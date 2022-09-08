@@ -17,6 +17,10 @@ app.use('/api', (req, res) => {
   res.send('API is Working');
 });
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
 app.listen(PORT, () => {
   console.log(`App is listening at ${PORT}`);
 });
