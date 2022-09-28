@@ -15,7 +15,7 @@ export default function Footer() {
         </p>
         <a
           className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start"
-          href="https://github.com/thisisfaar/telecrit"
+          href="https://github.com/ThisIsFaar/Visual-Dashboard"
           target="_blank"
           rel="noreferrer"
         >
