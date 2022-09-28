@@ -1,6 +1,6 @@
 # Visual-Dashboard
 
-Visualizing large sample data to interactive charts/graphs with React Apex Chart Library
+Visualizing large sample data to interactive charts/graphs Dashboard app with React Apex Chart Library
 
 ![img](https://i.postimg.cc/HnZL08k2/1.png 'SS')
 
