@@ -8,6 +8,7 @@ import Relevance from './components/variables/Relevance';
 import Topics from './components/variables/Topics';
 import Year from './components/variables/Year';
 import Filter from './components/filters/Filter';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Region />
         <Country />
       </div>
+      <Footer />
     </div>
   );
 }
